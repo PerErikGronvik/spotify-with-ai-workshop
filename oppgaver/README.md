@@ -111,8 +111,8 @@ _Den ferdiglagde komponenten PlaylistPage viser en side i frontenden der brukern
 **Oppgave**
 
 1. Naviger til `App.tsx`, som ligger i `src`-mappen.
-2. Legg til en ny route med en tom path ("/") slik at PlaylistPage blir hovedsiden.
-3. Husk å importere PlaylistPage.
+2. Legg til en ny route med en tom path ("/") slik at PlaylistsPage blir hovedsiden.
+3. Husk å importere PlaylistsPage.
 
 Når du har fullført oppgaven, skal **ImageUploadPage** vises på skjermen.
 

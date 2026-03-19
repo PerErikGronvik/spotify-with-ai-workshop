@@ -315,15 +315,13 @@ def fetch_spotify_web_api(endpoint, method, body=None):
     if not spotify_token.is_authorized():
         raise Exception("User not authorized. Please visit /login first.")
     token = spotify_token.get_token()
-    # #TODO  1.1: Vi må sende en gyldig request til riktig lokasjon.
-    # Vi bruker requests biblioteket for å sende en HTTP request til Spotify Web API. 
-    # en gyldig request består av riktig HTTP-metode (GET, POST, etc.), riktig endpoint URL, og nødvendige access token i headeren for autentisering.
-    # Hvis det er en POST eller PUT request, må vi også sende med body som JSON.
+
     res = requests.request(
-        "", #TODO Fyll inn riktig HTTP-metode
-        f'https://api.spotify.com/{""}', #TODO f-strengen mangler endpoint
-        headers={'Authorization': f'Bearer {""}'}, #TODO f-strengen mangler token
-        json="" #TODO Legg til Body i tilfelle det er POST eller PUT
+        method,
+        f'https://api.spotify.com/{endpoint}',
+        headers={'Authorization': f'Bearer {token}'}, 
+        json=body 
+
     )
     
     if res.status_code != 200:
