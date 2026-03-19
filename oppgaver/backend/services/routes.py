@@ -334,10 +334,8 @@ def fetch_spotify_web_api(endpoint, method, body=None):
 def get_playlists():
     """Get user's playlists"""
     try:
-        # #TODO  1.1: Her mangler vi gyldig endepunkt, finn ut hvilket endepunkt som blir korrekt ved å lese på spotify sin dokumentasjon
-        # dokumentasjon for metoden vi skal bruke finnes her; https://developer.spotify.com/documentation/web-api/reference/get-a-list-of-current-users-playlists
-        return fetch_spotify_web_api(
-            '', # #TODO Fyll inn riktig endpoint for å hente brukerens spillelister
+                return fetch_spotify_web_api(
+            'v1/me/playlists', 
             'GET'
         )['items']
     except Exception as e:
@@ -371,13 +369,7 @@ def get_playlist_tracks(playlist_id):
     Returns:
         List of tracks in the playlist
     """
-    # TODO  1.1: Hvilken HTTP-metode skal brukes for å hente spillelistens sanger fra Spotify Web API? Trenger vi å sende noen data i body for dette kallet?
-    # https://developer.spotify.com/documentation/web-api/reference/get-playlists-tracks
-    try:
-        return fetch_spotify_web_api(
-            f'v1/playlists/{playlist_id}/items',
-            ''
-        )['items']
-    except Exception as e:
-        print(f"ERROR in get_playlist_tracks: {str(e)}")
-        return []
+    return fetch_spotify_web_api(
+        f'v1/playlists/{playlist_id}/items',
+        'GET'
+    )['items']
